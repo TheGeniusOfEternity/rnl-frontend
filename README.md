@@ -1,5 +1,14 @@
-# Vue 3 + TypeScript + Vite
+# RNL Frontend
+## What is it?
+RNL Frontend is a group project of ITMO students, collaboration with Russian National Library
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## Technologies
+- Vue3 - JavaScript framework, designed for creating reactive client web applications
+- Typescript - JS-based language with strict typization
+- Vite - project builder
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+## Setup Project
+1. Check if you has Git installed on your device: ``` git -v ```. If not, download from <a href="https://git-scm.com/downloads">official website</a>
+2. Clone this repository to your device: ``` git clone https://github.com/TheGeniusOfEternity/rnl-frontend.git ```
+3. Install all required dependencies: ``` npm install ``` (make sure Node.js is installed, if not, get it <a href="https://nodejs.org/en/download">here</a>)
+4. Run project with ``` npm run dev ```
