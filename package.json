@@ -12,7 +12,8 @@
     "lint:fix": "eslint src --fix"
   },
   "dependencies": {
-    "vue": "^3.5.13"
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.0",
@@ -34,6 +35,9 @@
     "vue-tsc": "^2.2.4"
   },
   "lint-staged": {
-    "*.{js,vue,jsx,ts,tsx}": ["eslint --fix", "git add"]
+    "*.{js,vue,jsx,ts,tsx}": [
+      "eslint --fix",
+      "git add"
+    ]
   }
 }
