@@ -3,7 +3,6 @@
   <section class="page">
     <div class="intro-container">
       <h2>{{ $t('home.intro') }}</h2>
-      <p></p>
     </div>
     <div class="card-container">
       <section class="card">
@@ -85,6 +84,23 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="theories-container">
+      <h2>Теории происхождения</h2>
+      <div class="card-container">
+        <section class="card">
+          <h2>{{ $t('home.history.theories.labor.title') }}</h2>
+          <p>{{ $t('home.history.theories.labor.description') }}</p>
+        </section>
+        <section class="card">
+          <h2>{{ $t('home.history.theories.mystical.title') }}</h2>
+          <p>{{ $t('home.history.theories.mystical.description') }}</p>
+        </section>
+        <section class="card">
+          <h2>{{ $t('home.history.theories.archaeological.title') }}</h2>
+          <p>{{ $t('home.history.theories.archaeological.description') }}</p>
+        </section>
       </div>
     </div>
   </section>
