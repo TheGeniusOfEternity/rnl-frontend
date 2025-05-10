@@ -6,19 +6,25 @@
     </div>
     <div class="card-container">
       <section class="card">
-        <h2>{{ $t('home.history.title') }}</h2>
-        <p>{{ $t('home.history.origin') }}</p>
+        <div class="card-text">
+          <h2>{{ $t('home.history.title') }}</h2>
+          <p>{{ $t('home.history.origin') }}</p>
+        </div>
       </section>
 
       <section class="card">
-        <h2>Переиспользование</h2>
-        <p>{{ $t('home.history.reuse') }}</p>
+        <div class="card-text">
+          <h2>Переиспользование</h2>
+          <p>{{ $t('home.history.reuse') }}</p>
+        </div>
       </section>
 
       <section class="card">
-        <h2>Местоположение</h2>
-        <p>{{ $t('home.history.location') }}</p>
-        <p>{{ $t('home.history.status') }}</p>
+        <div class="card-text">
+          <h2>Местоположение</h2>
+          <p>{{ $t('home.history.location') }}</p>
+          <p>{{ $t('home.history.status') }}</p>
+        </div>
       </section>
     </div>
     <div class="history-timeline">
@@ -90,46 +96,88 @@
       <h2>Теории происхождения</h2>
       <div class="card-container">
         <section class="card">
-          <h2>{{ $t('home.history.theories.labor.title') }}</h2>
-          <p>{{ $t('home.history.theories.labor.description') }}</p>
+          <div class="card-text">
+            <h2>{{ $t('home.history.theories.labor.title') }}</h2>
+            <p>{{ $t('home.history.theories.labor.description') }}</p>
+          </div>
         </section>
         <section class="card">
-          <h2>{{ $t('home.history.theories.mystical.title') }}</h2>
-          <p>{{ $t('home.history.theories.mystical.description') }}</p>
+          <div class="card-text">
+            <h2>{{ $t('home.history.theories.mystical.title') }}</h2>
+            <p>{{ $t('home.history.theories.mystical.description') }}</p>
+          </div>
         </section>
         <section class="card">
-          <h2>{{ $t('home.history.theories.archaeological.title') }}</h2>
-          <p>{{ $t('home.history.theories.archaeological.description') }}</p>
+          <div class="card-text">
+            <h2>{{ $t('home.history.theories.archaeological.title') }}</h2>
+            <p>{{ $t('home.history.theories.archaeological.description') }}</p>
+          </div>
+        </section>
+      </div>
+    </div>
+    <div class="scroll-card">
+      <p>Тут какой то текст</p>
+      <button class="scroll-btn left" @click="scrollLeft">❮</button>
+      <button class="scroll-btn right" @click="scrollRight">❯</button>
+      <div class="scroll-content" ref="scrollContent">
+        <section
+          class="card"
+          v-for="(items, index) in architectureData"
+          :key="index"
+        >
+          <!--TODO: сделать функцию для выбора фотографии, мб будет нужна отдельная папака с пронумерованными изображениями -->
+          <img src="../assets/main/modern.jpeg" />
+          <ul>
+            <li v-for="(arch, i) in items" :key="i">
+              {{ arch }}
+            </li>
+          </ul>
         </section>
       </div>
     </div>
   </section>
 </template>
 
-<script setup></script>
+<script setup lang="ts">
+import { ref } from 'vue';
+import jsonData from '../locales/ru.json';
+
+type ArchitectureData = string[][];
+
+const scrollContent = ref<HTMLElement | null>(null);
+const architectureData = (jsonData.home.architecture ?? []) as ArchitectureData;
+
+function scrollLeft(): void {
+  if (scrollContent.value) {
+    scrollContent.value.scrollBy({ left: -300, behavior: 'smooth' });
+  }
+}
+
+function scrollRight(): void {
+  if (scrollContent.value) {
+    scrollContent.value.scrollBy({ left: 300, behavior: 'smooth' });
+  }
+}
+</script>
 
 <style scoped>
 h1,
 h2 {
-  color: #2c3e50;
-  margin-top: 2rem;
-}
-p {
-  color: #2c3e50;
-  line-height: 1.6;
-}
-h3,
-h4 {
-  margin-top: 1rem;
-  color: #34495e;
+  color: rgba(44, 62, 80, 0.9);
+  margin-top: 2vh;
 }
 
+h3,
+h4 {
+  margin-top: 1vh;
+  color: rgba(52, 73, 94, 0.85);
+}
 ul {
-  padding-left: 1.5rem;
+  padding-left: 1.5vw;
 }
 
 li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.5vh;
 }
 .page {
   display: flex;
@@ -138,7 +186,7 @@ li {
   width: 100%;
   min-height: 100vh;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2vh 2vw;
   position: relative;
   overflow: hidden;
   box-sizing: border-box;
@@ -169,28 +217,30 @@ li {
   left: 0;
   width: 100%;
   height: 100%;
-  background: #f8f9fa;
+  background: rgba(248, 249, 250, 0.95);
   z-index: -2;
 }
 .intro-container {
   text-align: left;
   margin-right: auto;
-  max-width: 50%;
-  padding: 1rem 0;
+  max-width: 50vw;
+  padding: 1vh 0;
 }
 .card-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 40vw), 1fr));
+  gap: 2vh;
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .card {
+  display: flex;
+  overflow: hidden;
   background: rgba(255, 255, 255, 0.8);
-  border-radius: 15px;
-  padding: 2rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 2vh;
+  padding: 2vh;
+  box-shadow: 0 0.4vh 2vh rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
 }
 .card:hover {
@@ -198,13 +248,14 @@ li {
 }
 
 .card h2 {
-  color: #2c3e50;
-  margin-bottom: 1rem;
+  color: rgba(44, 62, 80, 0.9);
+  margin-bottom: 1vh;
   font-size: 1.5rem;
 }
 
-.card p {
-  color: #7f8c8d;
+.card p,
+.scroll-card {
+  color: rgba(127, 140, 141, 0.9);
   line-height: 1.6;
 }
 
@@ -213,6 +264,9 @@ li {
   max-width: 1200px;
   margin: 4vh auto;
   padding: 0 2vw;
+  background-image: url('data:image/svg+xml,%3Csvg viewBox%3D%220 0 500 100%22 xmlns%3D%22http://www.w3.org/2000/svg%22%3E%3Cdefs%3E%3ClinearGradient id%3D%22grad1%22 x1%3D%220%25%22 y1%3D%220%25%22 x2%3D%220%25%22 y2%3D%22100%25%22%3E%3Cstop offset%3D%220%25%22 style%3D%22stop-color%3Argb(169%2C 132%2C 103)%3B stop-opacity%3A0.9%3B%22 /%3E%3Cstop offset%3D%22100%25%22 style%3D%22stop-color%3Argb(221%2C 229%2C 182)%3B stop-opacity%3A0.9%3B%22 /%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d%3D%22M0,70 C150,0 350,100 500,50 L500,120 L0,100 Z%22 fill%3D%22url(%23grad1)%22 /%3E%3C/svg%3E');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .timeline-container {
@@ -237,12 +291,7 @@ li {
   display: flex;
   overflow: hidden;
   border-radius: 2vh;
-  background-color: rgba(221, 229, 182, 0.95);
-  background-image: url('data:image/svg+xml,%3Csvg viewBox%3D%220 0 500 100%22 xmlns%3D%22http://www.w3.org/2000/svg%22%3E%3Cpath d%3D%22M0,50 C150,100 350,0 500,50 L500,0 L0,0 Z%22 fill%3D%22rgba(169, 132, 103, 0.9)%22 /%3E%3C/svg%3E');
-  background-repeat: no-repeat;
-  background-size: cover;
 }
-
 .period-image {
   flex: 1;
   min-height: 20vh;
@@ -265,9 +314,10 @@ li {
 }
 
 .period-text p {
-  color: rgba(52, 73, 94, 0.9);
+  color: rgb(44, 62, 80);
   line-height: 1.7;
-  margin-bottom: 1.5vh;
+  margin: 1.5vh;
+  padding: 2vh;
 }
 .timeline-marker {
   position: relative;
@@ -319,5 +369,20 @@ li {
     rgba(234, 224, 224, 0.8),
     rgba(255, 255, 255, 0.7)
   );
+}
+.scroll-card {
+  margin-top: 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.scroll-content {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 12px 0;
+  scrollbar-width: thin;
 }
 </style>
