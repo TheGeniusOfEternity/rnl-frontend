@@ -40,7 +40,7 @@
             <div class="period-card">
               <div class="period-image">
                 <img
-                  src="../assets/main/ancient.jpeg"
+                  src="../../assets/main/ancient.jpeg"
                   alt="Древний Ньюгрейндж"
                 />
               </div>
@@ -63,7 +63,7 @@
               </div>
               <div class="period-image">
                 <img
-                  src="../assets/main/rediscovery.jpeg"
+                  src="../../assets/main/rediscovery.jpeg"
                   alt="Открытие Ньюгрейнджа"
                 />
               </div>
@@ -80,7 +80,7 @@
             <div class="period-card">
               <div class="period-image">
                 <img
-                  src="../assets/main/modern.jpeg"
+                  src="../../assets/main/modern.jpeg"
                   alt="Археологические раскопки"
                 />
               </div>
@@ -115,24 +115,105 @@
         </section>
       </div>
     </div>
-    <div class="scroll-card">
-      <p>Тут какой то текст</p>
-      <button class="scroll-btn left" @click="scrollLeft">❮</button>
-      <button class="scroll-btn right" @click="scrollRight">❯</button>
-      <div class="scroll-content" ref="scrollContent">
-        <section
-          class="card"
-          v-for="(items, index) in architectureData"
+
+    <div class="architecture-container">
+      <div class="architecture-intro">
+        <h2>{{ jsonData.home.architecture.title }}</h2>
+        <p>{{ jsonData.home.architecture.description }}</p>
+        <div class="scroll-buttons intro-scroll-buttons">
+          <button @click="scrollLeft">←</button>
+          <button @click="scrollRight">→</button>
+        </div>
+      </div>
+      <div class="architecture-scroll" ref="scrollContent">
+        <div
+          class="architecture-card"
+          v-for="(card, index) in architectureCards"
           :key="index"
         >
-          <!--TODO: сделать функцию для выбора фотографии, мб будет нужна отдельная папака с пронумерованными изображениями -->
-          <img src="../assets/main/modern.jpeg" />
-          <ul>
-            <li v-for="(arch, i) in items" :key="i">
-              {{ arch }}
-            </li>
+          <img :src="`/src/assets/main/arch-${index + 1}.png`" alt="image" />
+
+          <div class="card-title">{{ card.title }}</div>
+
+          <ul class="card-params">
+            <li v-for="(item, i) in card.items" :key="i">{{ item }}</li>
           </ul>
-        </section>
+        </div>
+      </div>
+    </div>
+
+    <div class="astronomy-container">
+      <h2>Астрономическое значение</h2>
+      <div class="timeline-container">
+        <div class="timeline-item ancient">
+          <div class="timeline-content">
+            <h3>Астрономическая ориентация</h3>
+            <div class="period-card">
+              <div class="period-image">
+                <img
+                  src="../../assets/main/orientation.png"
+                  alt="Древний Ньюгрейндж"
+                />
+              </div>
+              <div class="period-text">
+                <div class="astro-div">
+                  {{ $t('home.astronomy.orientation.tunnel') }}.
+                </div>
+                <div class="astro-div">
+                  {{ $t('home.astronomy.orientation.entrance') }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item rediscovery">
+          <div class="timeline-content">
+            <h3>Феномен солнцестояния</h3>
+            <div class="period-card">
+              <div class="period-text">
+                <div class="astro-div">
+                  {{ $t('home.astronomy.fenomen.osvesh') }}
+                </div>
+                <div class="astro-div">
+                  {{ $t('home.astronomy.fenomen.duration') }}
+                </div>
+                <div class="astro-div">
+                  {{ $t('home.astronomy.fenomen.effect') }}.
+                </div>
+              </div>
+              <div class="period-image">
+                <img
+                  src="../../assets/main/fenomen.png"
+                  alt="Открытие Ньюгрейнджа"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item modern">
+          <div class="timeline-content">
+            <h3>Как попасть?</h3>
+            <div class="period-card">
+              <div class="period-image">
+                <img
+                  src="../../assets/main/modern.jpeg"
+                  alt="Археологические раскопки"
+                />
+              </div>
+              <div class="period-text">
+                <div class="astro-div">
+                  {{ $t('home.astronomy.lottery&access.lottery') }}
+                </div>
+                <div class="astro-div">
+                  {{ $t('home.astronomy.lottery&access.stat') }}
+                </div>
+                <div class="astro-div">
+                  {{ $t('home.astronomy.lottery&access.reconstruction') }}.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -140,12 +221,67 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import jsonData from '../locales/ru.json';
+import jsonData from '../../locales/ru.json';
 
-type ArchitectureData = string[][];
+type ArchitectureCard = {
+  title: string;
+  items: string[];
+};
+
+type ArchitectureSection = {
+  title: string;
+  params: string[];
+};
+
+const architectureRaw = jsonData.home?.architecture;
+
+console.log('architectureRaw:', architectureRaw);
+
+const architectureCards = ref<ArchitectureCard[]>(
+  architectureRaw?.items?.map((section: ArchitectureSection) => ({
+    title: section.title,
+    items: section.params,
+  })) ?? []
+);
 
 const scrollContent = ref<HTMLElement | null>(null);
-const architectureData = (jsonData.home.architecture ?? []) as ArchitectureData;
+
+import { onMounted, onUnmounted } from 'vue';
+
+const handleWheel = (e: WheelEvent) => {
+  if (!scrollContent.value) return;
+  e.preventDefault();
+  scrollContent.value.scrollLeft += e.deltaY;
+};
+
+const setupScrollHandlers = () => {
+  if (scrollContent.value) {
+    scrollContent.value.addEventListener('wheel', handleWheel, {
+      passive: false,
+    });
+  }
+};
+
+const removeScrollHandlers = () => {
+  if (scrollContent.value) {
+    scrollContent.value.removeEventListener('wheel', handleWheel);
+  }
+};
+
+onMounted(() => {
+  if (scrollContent.value) {
+    scrollContent.value.addEventListener('mouseenter', setupScrollHandlers);
+    scrollContent.value.addEventListener('mouseleave', removeScrollHandlers);
+  }
+});
+
+onUnmounted(() => {
+  if (scrollContent.value) {
+    scrollContent.value.removeEventListener('mouseenter', setupScrollHandlers);
+    scrollContent.value.removeEventListener('mouseleave', removeScrollHandlers);
+    removeScrollHandlers();
+  }
+});
 
 function scrollLeft(): void {
   if (scrollContent.value) {
@@ -377,6 +513,7 @@ li {
   align-items: center;
   gap: 12px;
 }
+
 .scroll-content {
   display: flex;
   gap: 18px;
@@ -384,5 +521,144 @@ li {
   scroll-behavior: smooth;
   padding: 12px 0;
   scrollbar-width: thin;
+}
+
+.architecture-container {
+  display: flex;
+  flex-direction: row;
+  padding: 40px;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.architecture-intro {
+  flex: 0 0 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.architecture-scroll {
+  flex: 2;
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 16px;
+  display: flex;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.architecture-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.architecture-intro h2 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.architecture-card {
+  min-width: 300px;
+  max-width: 300px;
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.architecture-card img {
+  width: 100%;
+  flex: 0 0 auto;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.info span {
+  font-size: 12px;
+  color: #888;
+}
+
+.scroll-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.intro-scroll-buttons {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.intro-scroll-buttons button {
+  background: #eee;
+  border: none;
+  padding: 8px 16px;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.intro-scroll-buttons button:hover {
+  background: #ccc;
+}
+
+.card-title {
+  font-weight: bold;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.card-params {
+  list-style: disc;
+  padding-left: 0px;
+  font-size: 14px;
+  color: #444;
+  margin: 0 0 16px;
+  list-style: none;
+  text-align: left;
+}
+
+.astronomy-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 4vh auto;
+  padding: 0 2vw;
+  background-image: url('data:image/svg+xml,%3Csvg viewBox%3D%220 0 500 100%22 xmlns%3D%22http://www.w3.org/2000/svg%22%3E%3Cdefs%3E%3ClinearGradient id%3D%22grad1%22 x1%3D%220%25%22 y1%3D%220%25%22 x2%3D%220%25%22 y2%3D%22100%25%22%3E%3Cstop offset%3D%220%25%22 style%3D%22stop-color%3Argb(169%2C 132%2C 103)%3B stop-opacity%3A0.9%3B%22 /%3E%3Cstop offset%3D%22100%25%22 style%3D%22stop-color%3Argb(221%2C 229%2C 182)%3B stop-opacity%3A0.9%3B%22 /%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d%3D%22M0,70 C150,0 350,100 500,50 L500,120 L0,100 Z%22 fill%3D%22url(%23grad1)%22 /%3E%3C/svg%3E');
+  background-repeat: no-repeat;
+
+  background-size: cover;
+}
+
+.astronomy-container::before {
+  background: radial-gradient(
+    circle at center,
+    rgba(173, 193, 120, 0.8) 0%,
+    rgba(221, 229, 182, 0.5) 70%,
+    transparent 100%
+  );
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  width: 150%;
+  height: 80%;
+  border-radius: 50%;
+  transform: translateX(-50%) translateY(-45%);
+  z-index: -1;
+}
+
+.astro-div {
+  text-align: center;
+  padding-left: 20px;
 }
 </style>
