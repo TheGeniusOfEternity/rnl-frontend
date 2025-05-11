@@ -216,6 +216,58 @@
         </div>
       </div>
     </div>
+    <div class="card-container double-cards">
+      <section class="card wide-card">
+        <div class="card-text">
+          <h2>Экскурсии и посещение</h2>
+          <div class="card-content">
+            <div class="card-section">
+              <h3>Организация посещений</h3>
+              <ul>
+                <li>
+                  {{ $t('home.excursions&attendance.organization.guide') }}
+                </li>
+                <li>
+                  {{ $t('home.excursions&attendance.organization.groups') }}
+                </li>
+                <li>
+                  {{ $t('home.excursions&attendance.organization.access') }}
+                </li>
+              </ul>
+            </div>
+            <div class="card-section">
+              <h3>Как добраться</h3>
+              <ul>
+                <li>{{ $t('home.excursions&attendance.how2get.location') }}</li>
+                <li>{{ $t('home.excursions&attendance.how2get.access') }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="card wide-card">
+        <div class="card-text">
+          <h2>Значение и наследие</h2>
+          <div class="card-content">
+            <div class="card-section">
+              <h3>Мировое значение</h3>
+              <ul>
+                <li>
+                  {{ $t('home.value&heritage.worlwide_value.unesco') }}
+                </li>
+                <li>
+                  {{ $t('home.value&heritage.worlwide_value.neolit') }}
+                </li>
+              </ul>
+            </div>
+            <div class="card-section">
+              <h3>Культурная ценность</h3>
+              <p>{{ $t('home.value&heritage.cultural_value') }}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   </section>
 </template>
 
@@ -533,6 +585,7 @@ li {
 }
 
 .architecture-intro {
+  color: rgba(52, 73, 94, 0.7);
   flex: 0 0 30%;
   display: flex;
   flex-direction: column;
@@ -598,7 +651,7 @@ li {
 }
 
 .intro-scroll-buttons button {
-  background: #eee;
+  background: rgba(108, 88, 76, 0.8);
   border: none;
   padding: 8px 16px;
   font-size: 18px;
@@ -608,7 +661,7 @@ li {
 }
 
 .intro-scroll-buttons button:hover {
-  background: #ccc;
+  background: rgba(169, 132, 103, 0.8);
 }
 
 .card-title {
@@ -660,5 +713,33 @@ li {
 .astro-div {
   text-align: center;
   padding-left: 20px;
+  color: rgba(44, 62, 80, 0.7);
+}
+.double-cards {
+  grid-template-columns: repeat(auto-fit, minmax(min(450px, 100%), 1fr));
+  max-width: 1200px;
+  margin: 4vh auto;
+  padding: 0 2vw;
+}
+.wide-card {
+  grid-column: span 1;
+}
+.card-content {
+  display: flex;
+  gap: 2vw;
+}
+.card-section {
+  flex: 1;
+}
+.card-section h3 {
+  color: rgba(52, 73, 94, 0.85);
+  margin: 1.5vh 0;
+  font-size: 1.2rem;
+}
+.card-section p {
+  color: rgba(52, 73, 94, 0.7);
+}
+.card-section li {
+  color: rgba(52, 73, 94, 0.7);
 }
 </style>
