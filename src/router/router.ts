@@ -1,11 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomePage from '../pages/HomePage.vue';
+import SymbolicValue from '../pages/SymbolicValuePage.vue';
 
 const routes = [
   {
     path: '/',
     component: HomePage,
     meta: { ruName: 'Главная страница' },
+  },
+  {
+    path: '/symbolic-value',
+    component: SymbolicValue,
+    meta: { ruName: 'Символическое значение' },
   },
 ];
 
