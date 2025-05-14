@@ -1,17 +1,23 @@
 <template>
   <header class="header">
-    <a href="/" class="logo"><img src="../assets/logo.png" alt="" /></a>
+    <router-link to="/" class="logo" @click="closeMenu"
+      ><img src="../assets/logo.png" alt=""
+    /></router-link>
     <nav :class="['nav', { open: isMenuOpen }]">
-      <a href="/" class="nav-link" @click="closeMenu">Главная</a>
-      <a href="/symbolic-value" class="nav-link" @click="closeMenu"
-        >Символическое значение</a
+      <router-link to="/" class="nav-link" @click="closeMenu"
+        >Главная</router-link
       >
-      <a href="/winter-solstice" class="nav-link" @click="closeMenu"
-        >Зимнее солнцестояние</a
+      <router-link to="/symbolic-value" class="nav-link" @click="closeMenu"
+        >Символическое значение</router-link
       >
-      <a href="/signin" class="nav-link" @click="closeMenu">Войти</a>
-      <a href="/signup" class="nav-link" @click="closeMenu"
-        >Зарегистрироваться</a
+      <router-link to="/winter-solstice" class="nav-link" @click="closeMenu"
+        >Зимнее солнцестояние</router-link
+      >
+      <router-link to="/signin" class="nav-link" @click="closeMenu"
+        >Войти</router-link
+      >
+      <router-link to="/signup" class="nav-link" @click="closeMenu"
+        >Зарегистрироваться</router-link
       >
     </nav>
     <button
@@ -40,12 +46,6 @@ function closeMenu() {
 </script>
 
 <style scoped>
-:root {
-  --header-height: 56px;
-  --menu-item-height: 48px;
-  --menu-max-width: 320px;
-}
-
 .header {
   position: fixed;
   top: 0;
@@ -69,7 +69,6 @@ function closeMenu() {
   display: block;
 }
 
-/* Desktop version */
 .nav {
   display: flex;
   align-items: center;
@@ -89,10 +88,9 @@ function closeMenu() {
 }
 
 .nav-link:hover {
-  background: #c4cf86; /* picked new color for hover, the one from original palette didn't fit the vibe*/
+  background: #c4cf86;
 }
 
-/* Pop-up menu button */
 .menu-toggle {
   display: none;
   background: none;
@@ -117,7 +115,6 @@ function closeMenu() {
   outline: none;
 }
 
-/* Mobile version */
 @media (max-width: 900px) {
   .nav {
     display: none;
@@ -159,7 +156,6 @@ function closeMenu() {
   }
 }
 
-/* Hide pop-up menu on bigger screen */
 @media (min-width: 901px) {
   .menu-toggle {
     display: none !important;
