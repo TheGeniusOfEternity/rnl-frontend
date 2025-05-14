@@ -1,7 +1,20 @@
-<script setup lang="ts"></script>
 <template>
-  <router-view />
+  <div id="app">
+    <Header-Component />
+    <router-view />
+  </div>
 </template>
+
+<script>
+import HeaderComponent from './components/Header-Component.vue';
+
+export default {
+  name: 'App',
+  components: {
+    'Header-Component': HeaderComponent,
+  },
+};
+</script>
 
 <style scoped>
 .logo {
