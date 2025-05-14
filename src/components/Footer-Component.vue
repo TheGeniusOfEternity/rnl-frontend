@@ -40,12 +40,6 @@ function closeMenu() {
 </script>
 
 <style scoped>
-:root {
-  --header-height: 56px;
-  --menu-item-height: 48px;
-  --menu-max-width: 320px;
-}
-
 .header {
   position: fixed;
   bottom: 0;
