@@ -1,5 +1,5 @@
 <template>
-  <header class="header">
+  <footer class="footer">
     <router-link to="/" class="logo" @click="closeMenu"
       ><img src="../assets/logo.png" alt=""
     /></router-link>
@@ -22,7 +22,7 @@
     >
       &#9776;
     </button>
-  </header>
+  </footer>
 </template>
 
 <script setup lang="ts">
@@ -40,7 +40,7 @@ function closeMenu() {
 </script>
 
 <style scoped>
-.header {
+.footer {
   position: fixed;
   bottom: 0;
   left: 0;
