@@ -18,7 +18,7 @@
       class="menu-toggle"
       aria-label="Открыть меню"
       @click="toggleMenu"
-      :aria-expanded="isMenuOpen.toString()"
+      :aria-expanded="isMenuOpen"
     >
       &#9776;
     </button>
@@ -45,7 +45,7 @@ function closeMenu() {
   bottom: 0;
   left: 0;
   width: 100vw;
-  height: var(--header-height);
+  height: var(--footer-height);
   background-color: #f0ead2;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   display: flex;
@@ -57,8 +57,8 @@ function closeMenu() {
 }
 
 .logo img {
-  padding: 0.5rem 0.5rem 0.5rem 3.5rem;
-  height: 7rem;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  height: 6.5rem;
   width: auto;
   display: block;
 }
@@ -93,8 +93,6 @@ function closeMenu() {
   cursor: pointer;
   padding: 0 0.5rem 0.3rem 0.5rem;
   margin: 0;
-  width: var(--header-height);
-  height: var(--header-height);
   color: #6c584c;
   display: flex;
   align-items: center;
@@ -113,7 +111,7 @@ function closeMenu() {
   .nav {
     display: none;
     position: fixed;
-    bottom: 8.5rem;
+    bottom: 10rem;
     right: 0;
     background: #e7deb7;
     flex-direction: column;
@@ -127,7 +125,7 @@ function closeMenu() {
     display: flex;
   }
   .nav-link {
-    padding: 0.8rem 0.8rem 0.8rem 0.9rem;
+    padding: 0.8rem 0.8rem 0.8rem 1rem;
     height: var(--menu-item-height);
     line-height: var(--menu-item-height);
     border-bottom: 1px solid #94857c;
@@ -135,7 +133,7 @@ function closeMenu() {
     display: flex;
     align-items: center;
     text-align: left;
-    border-radius: 5px;
+    border-radius: 5px 5px 5px 0;
     background: #f0ead2;
     transition: background 0.3s;
   }
