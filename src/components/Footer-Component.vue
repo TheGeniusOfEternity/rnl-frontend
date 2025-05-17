@@ -146,6 +146,9 @@ function closeMenu() {
   .menu-toggle {
     display: flex;
   }
+  .logo img {
+    height: 5rem;
+  }
 }
 
 @media (min-width: 901px) {
