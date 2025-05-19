@@ -274,6 +274,7 @@
 import { ref } from 'vue';
 import jsonData from '../../locales/ru.json';
 import type { ArchitectureCard, ArchitectureSection } from './types.ts';
+import '../../assets/style/main-page.css';
 
 const architectureRaw = jsonData.home?.architecture;
 
@@ -339,15 +340,16 @@ function scrollRight(): void {
 <style scoped>
 h1,
 h2 {
-  color: rgba(44, 62, 80, 0.9);
+  color: var(--dark-blue);
   margin-top: 2vh;
 }
 
 h3,
 h4 {
   margin-top: 1vh;
-  color: rgba(52, 73, 94, 0.85);
+  color: var(--mid-blue);
 }
+
 ul {
   padding-left: 1.5vw;
 }
@@ -355,6 +357,7 @@ ul {
 li {
   margin-bottom: 0.5vh;
 }
+
 .page {
   display: flex;
   flex-direction: column;
@@ -379,8 +382,8 @@ li {
   transform: translateX(-50%) translateY(-45%);
   background: radial-gradient(
     circle at center,
-    rgba(173, 193, 120, 0.8) 0%,
-    rgba(221, 229, 182, 0.5) 70%,
+    var(--green-tint) 0%,
+    var(--green-pale),
     transparent 100%
   );
   z-index: -1;
@@ -393,15 +396,17 @@ li {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(248, 249, 250, 0.95);
+  background: var(--beige-tint);
   z-index: -2;
 }
+
 .intro-container {
   text-align: left;
   margin-right: auto;
   max-width: 50vw;
   padding: 1vh 0;
 }
+
 .card-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(300px, 40vw), 1fr));
@@ -413,25 +418,26 @@ li {
 .card {
   display: flex;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.8);
+  background: var(--bg-white-soft);
   border-radius: 2vh;
   padding: 2vh;
   box-shadow: 0 0.4vh 2vh rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
 }
+
 .card:hover {
   transform: scale(1.05);
 }
 
 .card h2 {
-  color: rgba(44, 62, 80, 0.9);
+  color: var(--dark-blue);
   margin-bottom: 1vh;
   font-size: 1.5rem;
 }
 
 .card p,
 .scroll-card {
-  color: rgba(127, 140, 141, 0.9);
+  color: var(--light-grey);
   line-height: 1.6;
 }
 
@@ -440,7 +446,7 @@ li {
   max-width: 1200px;
   margin: 4vh auto;
   padding: 0 2vw;
-  background-image: url('data:image/svg+xml,%3Csvg viewBox%3D%220 0 500 100%22 xmlns%3D%22http://www.w3.org/2000/svg%22%3E%3Cdefs%3E%3ClinearGradient id%3D%22grad1%22 x1%3D%220%25%22 y1%3D%220%25%22 x2%3D%220%25%22 y2%3D%22100%25%22%3E%3Cstop offset%3D%220%25%22 style%3D%22stop-color%3Argb(169%2C 132%2C 103)%3B stop-opacity%3A0.9%3B%22 /%3E%3Cstop offset%3D%22100%25%22 style%3D%22stop-color%3Argb(221%2C 229%2C 182)%3B stop-opacity%3A0.9%3B%22 /%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d%3D%22M0,70 C150,0 350,100 500,50 L500,120 L0,100 Z%22 fill%3D%22url(%23grad1)%22 /%3E%3C/svg%3E');
+  background-image: var(--gradient-wave);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -468,6 +474,7 @@ li {
   overflow: hidden;
   border-radius: 2vh;
 }
+
 .period-image {
   flex: 1;
   min-height: 20vh;
@@ -490,11 +497,12 @@ li {
 }
 
 .period-text p {
-  color: rgb(44, 62, 80);
+  color: var(--dark-blue);
   line-height: 1.7;
   margin: 1.5vh;
   padding: 2vh;
 }
+
 .timeline-marker {
   position: relative;
   width: 4vw;
@@ -504,7 +512,7 @@ li {
   width: 2.5vh;
   height: 2.5vh;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--white-hover);
   border: 0.4vh solid;
   box-sizing: border-box;
   position: relative;
@@ -512,15 +520,15 @@ li {
 }
 
 .timeline-item.ancient .marker-circle {
-  border-color: rgba(173, 193, 120, 0.9);
+  border-color: var(--green-tint);
 }
 
 .timeline-item.rediscovery .marker-circle {
-  border-color: rgba(108, 117, 125, 0.9);
+  border-color: var(--grey-medium);
 }
 
 .timeline-item.modern .marker-circle {
-  border-color: rgba(44, 62, 80, 0.9);
+  border-color: var(--dark-blue);
 }
 
 .marker-line {
@@ -531,9 +539,9 @@ li {
   height: calc(100% + 3vh);
   background: linear-gradient(
     to bottom,
-    rgba(173, 193, 120, 0.9),
-    rgba(108, 117, 125, 0.8),
-    rgba(44, 62, 80, 0.7)
+    var(--green-tint),
+    var(--grey-medium-light),
+    var(--dark-blue-light)
   );
   z-index: 1;
 }
@@ -541,11 +549,12 @@ li {
 .timeline-item:last-child .marker-line {
   background: linear-gradient(
     to bottom,
-    rgba(173, 193, 120, 0.9),
-    rgba(234, 224, 224, 0.8),
-    rgba(255, 255, 255, 0.7)
+    var(--green-tint),
+    var(--pink-tint),
+    var(--bg-white-soft)
   );
 }
+
 .scroll-card {
   margin-top: 20px;
   position: relative;
@@ -573,7 +582,7 @@ li {
 }
 
 .architecture-intro {
-  color: rgba(52, 73, 94, 0.7);
+  color: var(--mid-blue-light);
   flex: 0 0 30%;
   display: flex;
   flex-direction: column;
@@ -639,7 +648,7 @@ li {
 }
 
 .intro-scroll-buttons button {
-  background: rgba(108, 88, 76, 0.8);
+  background: var(--brown);
   border: none;
   padding: 8px 16px;
   font-size: 18px;
@@ -649,7 +658,7 @@ li {
 }
 
 .intro-scroll-buttons button:hover {
-  background: rgba(169, 132, 103, 0.8);
+  background: var(--brown-light);
 }
 
 .card-title {
@@ -659,12 +668,11 @@ li {
 }
 
 .card-params {
-  list-style: disc;
+  list-style: none;
   padding-left: 0px;
   font-size: 14px;
   color: #444;
   margin: 0 0 16px;
-  list-style: none;
   text-align: left;
 }
 
@@ -674,17 +682,16 @@ li {
   max-width: 1200px;
   margin: 4vh auto;
   padding: 0 2vw;
-  background-image: url('data:image/svg+xml,%3Csvg viewBox%3D%220 0 500 100%22 xmlns%3D%22http://www.w3.org/2000/svg%22%3E%3Cdefs%3E%3ClinearGradient id%3D%22grad1%22 x1%3D%220%25%22 y1%3D%220%25%22 x2%3D%220%25%22 y2%3D%22100%25%22%3E%3Cstop offset%3D%220%25%22 style%3D%22stop-color%3Argb(169%2C 132%2C 103)%3B stop-opacity%3A0.9%3B%22 /%3E%3Cstop offset%3D%22100%25%22 style%3D%22stop-color%3Argb(221%2C 229%2C 182)%3B stop-opacity%3A0.9%3B%22 /%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d%3D%22M0,70 C150,0 350,100 500,50 L500,120 L0,100 Z%22 fill%3D%22url(%23grad1)%22 /%3E%3C/svg%3E');
+  background-image: var(--gradient-wave);
   background-repeat: no-repeat;
-
   background-size: cover;
 }
 
 .astronomy-container::before {
   background: radial-gradient(
     circle at center,
-    rgba(173, 193, 120, 0.8) 0%,
-    rgba(221, 229, 182, 0.5) 70%,
+    var(--green-tint) 0%,
+    var(--green-pale),
     transparent 100%
   );
   content: '';
@@ -701,33 +708,37 @@ li {
 .astro-div {
   text-align: center;
   padding-left: 20px;
-  color: rgba(44, 62, 80, 0.7);
+  color: var(--dark-blue-light);
 }
+
 .double-cards {
   grid-template-columns: repeat(auto-fit, minmax(min(450px, 100%), 1fr));
   max-width: 1200px;
   margin: 4vh auto;
   padding: 0 2vw;
 }
+
 .wide-card {
   grid-column: span 1;
 }
+
 .card-content {
   display: flex;
   gap: 2vw;
 }
+
 .card-section {
   flex: 1;
 }
+
 .card-section h3 {
-  color: rgba(52, 73, 94, 0.85);
+  color: var(--mid-blue);
   margin: 1.5vh 0;
   font-size: 1.2rem;
 }
-.card-section p {
-  color: rgba(52, 73, 94, 0.7);
-}
+
+.card-section p,
 .card-section li {
-  color: rgba(52, 73, 94, 0.7);
+  color: var(--mid-blue-light);
 }
 </style>
