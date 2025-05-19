@@ -1,5 +1,6 @@
 :root {
-    --header-height: 56px;
     --menu-item-height: 48px;
     --menu-max-width: 320px;
+    --header-height: 56px;
+    --footer-height: 10rem;
 }

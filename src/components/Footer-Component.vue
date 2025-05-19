@@ -1,5 +1,5 @@
 <template>
-  <header class="header">
+  <footer class="footer">
     <router-link to="/" class="logo" @click="closeMenu"
       ><img src="../assets/logo.png" alt=""
     /></router-link>
@@ -13,22 +13,16 @@
       <router-link to="/winter-solstice" class="nav-link" @click="closeMenu"
         >Зимнее солнцестояние</router-link
       >
-      <router-link to="/signin" class="nav-link" @click="closeMenu"
-        >Войти</router-link
-      >
-      <router-link to="/signup" class="nav-link" @click="closeMenu"
-        >Зарегистрироваться</router-link
-      >
     </nav>
     <button
       class="menu-toggle"
       aria-label="Открыть меню"
       @click="toggleMenu"
-      :aria-expanded="isMenuOpen.toString()"
+      :aria-expanded="isMenuOpen"
     >
       &#9776;
     </button>
-  </header>
+  </footer>
 </template>
 
 <script setup lang="ts">
@@ -46,13 +40,13 @@ function closeMenu() {
 </script>
 
 <style scoped>
-.header {
+.footer {
   position: fixed;
-  top: 0;
+  bottom: 0;
   left: 0;
   width: 100vw;
-  height: var(--header-height);
-  background-color: #dde5b6;
+  height: var(--footer-height);
+  background-color: #f0ead2;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   display: flex;
   align-items: center;
@@ -63,8 +57,8 @@ function closeMenu() {
 }
 
 .logo img {
-  padding: 0.5rem 0 0.5rem 0;
-  height: 3.5rem;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  height: 6.5rem;
   width: auto;
   display: block;
 }
@@ -88,7 +82,7 @@ function closeMenu() {
 }
 
 .nav-link:hover {
-  background: #c4cf86;
+  background: #e7deb7;
 }
 
 .menu-toggle {
@@ -99,10 +93,7 @@ function closeMenu() {
   cursor: pointer;
   padding: 0 0.5rem 0.3rem 0.5rem;
   margin: 0;
-  width: var(--header-height);
-  height: var(--header-height);
   color: #6c584c;
-  display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 6px;
@@ -111,7 +102,7 @@ function closeMenu() {
 
 .menu-toggle:focus,
 .menu-toggle:active {
-  background: #c4cf86;
+  background: #e7deb7;
   outline: none;
 }
 
@@ -119,40 +110,43 @@ function closeMenu() {
   .nav {
     display: none;
     position: fixed;
-    top: 5rem;
+    bottom: 10rem;
     right: 0;
-    background: #dde5b6;
+    background: #e7deb7;
     flex-direction: column;
     align-items: stretch;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
     z-index: 1;
-    border-radius: 0 0 12px 12px;
+    border-radius: 12px 12px 0 0;
     max-height: calc(100vh - 56px);
   }
   .nav.open {
     display: flex;
   }
   .nav-link {
-    padding: 0.8rem 0.8rem 0.8rem 0.9rem;
+    padding: 0.8rem 0.8rem 0.8rem 1rem;
     height: var(--menu-item-height);
     line-height: var(--menu-item-height);
-    border-bottom: 1px solid #adc178;
+    border-bottom: 1px solid #94857c;
     font-size: 1.1rem;
     display: flex;
     align-items: center;
     text-align: left;
-    border-radius: 6px;
-    background: #dde5b6;
+    border-radius: 5px 5px 5px 0;
+    background: #f0ead2;
     transition: background 0.3s;
   }
   .nav-link:hover {
-    background: #c4cf86;
+    background: #e7deb7;
   }
   .nav-link:last-child {
     border-bottom: none;
   }
   .menu-toggle {
     display: flex;
+  }
+  .logo img {
+    height: 5rem;
   }
 }
 
