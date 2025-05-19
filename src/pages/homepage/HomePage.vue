@@ -1,4 +1,3 @@
-<!-- src/views/HomeView.vue -->
 <template>
   <section class="page">
     <div class="intro-container">
@@ -274,20 +273,9 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import jsonData from '../../locales/ru.json';
-
-type ArchitectureCard = {
-  title: string;
-  items: string[];
-};
-
-type ArchitectureSection = {
-  title: string;
-  params: string[];
-};
+import type { ArchitectureCard, ArchitectureSection } from './types.ts';
 
 const architectureRaw = jsonData.home?.architecture;
-
-console.log('architectureRaw:', architectureRaw);
 
 const architectureCards = ref<ArchitectureCard[]>(
   architectureRaw?.items?.map((section: ArchitectureSection) => ({
