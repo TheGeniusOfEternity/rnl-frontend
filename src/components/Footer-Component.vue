@@ -94,7 +94,6 @@ function closeMenu() {
   padding: 0 0.5rem 0.3rem 0.5rem;
   margin: 0;
   color: #6c584c;
-  display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 6px;
