@@ -1,28 +1,28 @@
 <template>
   <section class="page">
     <div class="intro-container">
-      <h2>{{ $t('home.intro') }}</h2>
+      <h2>{{ t('home.intro') }}</h2>
     </div>
     <div class="card-container">
       <section class="card">
         <div class="card-text">
-          <h2>{{ $t('home.history.title') }}</h2>
-          <p>{{ $t('home.history.origin') }}</p>
+          <h2>{{ t('home.history.title') }}</h2>
+          <p>{{ t('home.history.origin') }}</p>
         </div>
       </section>
 
       <section class="card">
         <div class="card-text">
           <h2>Переиспользование</h2>
-          <p>{{ $t('home.history.reuse') }}</p>
+          <p>{{ t('home.history.reuse') }}</p>
         </div>
       </section>
 
       <section class="card">
         <div class="card-text">
           <h2>Местоположение</h2>
-          <p>{{ $t('home.history.location') }}</p>
-          <p>{{ $t('home.history.status') }}</p>
+          <p>{{ t('home.history.location') }}</p>
+          <p>{{ t('home.history.status') }}</p>
         </div>
       </section>
     </div>
@@ -44,7 +44,7 @@
                 />
               </div>
               <div class="period-text">
-                <p>{{ $t('home.history.periods.decline') }}</p>
+                <p>{{ t('home.history.periods.decline') }}</p>
               </div>
             </div>
           </div>
@@ -58,7 +58,7 @@
             <h3>1699 год</h3>
             <div class="period-card">
               <div class="period-text">
-                <p>{{ $t('home.history.periods.rediscovery') }}</p>
+                <p>{{ t('home.history.periods.rediscovery') }}</p>
               </div>
               <div class="period-image">
                 <img
@@ -84,7 +84,7 @@
                 />
               </div>
               <div class="period-text">
-                <p>{{ $t('home.history.periods.archaeological') }}</p>
+                <p>{{ t('home.history.periods.archaeological') }}</p>
               </div>
             </div>
           </div>
@@ -96,20 +96,20 @@
       <div class="card-container">
         <section class="card">
           <div class="card-text">
-            <h2>{{ $t('home.history.theories.labor.title') }}</h2>
-            <p>{{ $t('home.history.theories.labor.description') }}</p>
+            <h2>{{ t('home.history.theories.labor.title') }}</h2>
+            <p>{{ t('home.history.theories.labor.description') }}</p>
           </div>
         </section>
         <section class="card">
           <div class="card-text">
-            <h2>{{ $t('home.history.theories.mystical.title') }}</h2>
-            <p>{{ $t('home.history.theories.mystical.description') }}</p>
+            <h2>{{ t('home.history.theories.mystical.title') }}</h2>
+            <p>{{ t('home.history.theories.mystical.description') }}</p>
           </div>
         </section>
         <section class="card">
           <div class="card-text">
-            <h2>{{ $t('home.history.theories.archaeological.title') }}</h2>
-            <p>{{ $t('home.history.theories.archaeological.description') }}</p>
+            <h2>{{ t('home.history.theories.archaeological.title') }}</h2>
+            <p>{{ t('home.history.theories.archaeological.description') }}</p>
           </div>
         </section>
       </div>
@@ -136,10 +136,10 @@
         </div>
       </div>
       <div class="scroll-buttons intro-scroll-buttons">
-        <button @click="scrollLeft" :aria-label="$t('home.scrollLeft')">
+        <button @click="scrollLeft" :aria-label="t('home.scrollLeft')">
           ←
         </button>
-        <button @click="scrollRight" :aria-label="$t('home.scrollRight')">
+        <button @click="scrollRight" :aria-label="t('home.scrollRight')">
           →
         </button>
       </div>
@@ -160,10 +160,10 @@
               </div>
               <div class="period-text">
                 <div class="astro-div">
-                  {{ $t('home.astronomy.orientation.tunnel') }}.
+                  {{ t('home.astronomy.orientation.tunnel') }}.
                 </div>
                 <div class="astro-div">
-                  {{ $t('home.astronomy.orientation.entrance') }}
+                  {{ t('home.astronomy.orientation.entrance') }}
                 </div>
               </div>
             </div>
@@ -175,13 +175,13 @@
             <div class="period-card">
               <div class="period-text">
                 <div class="astro-div">
-                  {{ $t('home.astronomy.fenomen.osvesh') }}
+                  {{ t('home.astronomy.fenomen.osvesh') }}
                 </div>
                 <div class="astro-div">
-                  {{ $t('home.astronomy.fenomen.duration') }}
+                  {{ t('home.astronomy.fenomen.duration') }}
                 </div>
                 <div class="astro-div">
-                  {{ $t('home.astronomy.fenomen.effect') }}.
+                  {{ t('home.astronomy.fenomen.effect') }}.
                 </div>
               </div>
               <div class="period-image">
@@ -205,13 +205,13 @@
               </div>
               <div class="period-text">
                 <div class="astro-div">
-                  {{ $t('home.astronomy.lottery&access.lottery') }}
+                  {{ t('home.astronomy.lottery&access.lottery') }}
                 </div>
                 <div class="astro-div">
-                  {{ $t('home.astronomy.lottery&access.stat') }}
+                  {{ t('home.astronomy.lottery&access.stat') }}
                 </div>
                 <div class="astro-div">
-                  {{ $t('home.astronomy.lottery&access.reconstruction') }}.
+                  {{ t('home.astronomy.lottery&access.reconstruction') }}.
                 </div>
               </div>
             </div>
@@ -228,21 +228,21 @@
               <h3>Организация посещений</h3>
               <ul>
                 <li>
-                  {{ $t('home.excursions&attendance.organization.guide') }}
+                  {{ t('home.excursions&attendance.organization.guide') }}
                 </li>
                 <li>
-                  {{ $t('home.excursions&attendance.organization.groups') }}
+                  {{ t('home.excursions&attendance.organization.groups') }}
                 </li>
                 <li>
-                  {{ $t('home.excursions&attendance.organization.access') }}
+                  {{ t('home.excursions&attendance.organization.access') }}
                 </li>
               </ul>
             </div>
             <div class="card-section">
               <h3>Как добраться</h3>
               <ul>
-                <li>{{ $t('home.excursions&attendance.how2get.location') }}</li>
-                <li>{{ $t('home.excursions&attendance.how2get.access') }}</li>
+                <li>{{ t('home.excursions&attendance.how2get.location') }}</li>
+                <li>{{ t('home.excursions&attendance.how2get.access') }}</li>
               </ul>
             </div>
           </div>
@@ -256,16 +256,16 @@
               <h3>Мировое значение</h3>
               <ul>
                 <li>
-                  {{ $t('home.value&heritage.worlwide_value.unesco') }}
+                  {{ t('home.value&heritage.worlwide_value.unesco') }}
                 </li>
                 <li>
-                  {{ $t('home.value&heritage.worlwide_value.neolit') }}
+                  {{ t('home.value&heritage.worlwide_value.neolit') }}
                 </li>
               </ul>
             </div>
             <div class="card-section">
               <h3>Культурная ценность</h3>
-              <p>{{ $t('home.value&heritage.cultural_value') }}</p>
+              <p>{{ t('home.value&heritage.cultural_value') }}</p>
             </div>
           </div>
         </div>
@@ -279,9 +279,11 @@ import { ref } from 'vue';
 import jsonData from '../../locales/ru.json';
 import type { ArchitectureCard, ArchitectureSection } from './types.ts';
 import '../../assets/style/main-page.css';
+import { onMounted, onUnmounted } from 'vue';
+import { useI18n } from 'vue-i18n';
 
 const architectureRaw = jsonData.home?.architecture;
-
+const { t } = useI18n();
 const architectureCards = ref<ArchitectureCard[]>(
   architectureRaw?.items?.map((section: ArchitectureSection) => ({
     title: section.title,
@@ -290,9 +292,6 @@ const architectureCards = ref<ArchitectureCard[]>(
 );
 
 const scrollContent = ref<HTMLElement | null>(null);
-
-import { onMounted, onUnmounted } from 'vue';
-
 const handleWheel = (e: WheelEvent) => {
   if (!scrollContent.value) return;
   e.preventDefault();

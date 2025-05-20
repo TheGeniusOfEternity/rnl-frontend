@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import jsonData from '../../locales/ru.json';
+import { useI18n } from 'vue-i18n';
+const { t } = useI18n();
 </script>
 
 <template>
   <section class="page">
-    <h1 class="title">{{ $t('interview.intro') }}</h1>
+    <h1 class="title">{{ t('interview.intro') }}</h1>
     <div class="topics">
       <div v-for="topic in jsonData.interview.topics" :key="topic.title">
         <h2 class="topic">{{ topic.title }}</h2>
