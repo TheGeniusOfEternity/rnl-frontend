@@ -97,35 +97,9 @@
   </div>
 </template>
 
-<style>
+<style scoped>
 * {
   box-sizing: border-box;
-}
-
-html,
-body,
-#app {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-}
-
-#app {
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-:root {
-  --pale-cream: #f0ead2;
-  --light-green: #dde5b6;
-  --medium-green: #adc178;
-  --warm-tan: #a98467;
-  --dark-brown: #6c584c;
-  --light-section: #f5f5f5;
-  --dark-section: #e0e0e0;
-  --highlight-color: #d1e7dd;
 }
 
 .page {
@@ -141,11 +115,12 @@ body,
   padding: 3rem 0;
   margin-bottom: 2rem;
   border: 2px solid var(--medium-green);
+  margin-top: var(--header-height);
 }
 
 .hero h1 {
   margin: 0;
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 .section {
@@ -221,5 +196,15 @@ body,
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   transform: scale(1.02);
   border-color: var(--medium-green);
+}
+
+@media screen and (max-width: 900px) {
+  .hero h1 {
+    font-size: 1.5rem;
+  }
+
+  .section h2 {
+    font-size: 1.2rem;
+  }
 }
 </style>
