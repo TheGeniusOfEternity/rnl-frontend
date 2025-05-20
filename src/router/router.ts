@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomePage from '../pages/homepage/HomePage.vue';
+import InterviewPage from '../pages/interview/InterviewPage.vue';
 import WinterSolstice from '../pages/WinterSolstice.vue';
 
 const routes = [
@@ -7,6 +8,11 @@ const routes = [
     path: '/',
     component: HomePage,
     meta: { ruName: 'Главная страница' },
+  },
+  {
+    path: '/interview',
+    component: InterviewPage,
+    meta: { ruName: 'Интервью' },
   },
   {
     path: '/winter-solstice',

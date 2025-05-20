@@ -119,10 +119,6 @@
       <div class="architecture-intro">
         <h2>{{ jsonData.home.architecture.title }}</h2>
         <p>{{ jsonData.home.architecture.description }}</p>
-        <div class="scroll-buttons intro-scroll-buttons">
-          <button @click="scrollLeft">←</button>
-          <button @click="scrollRight">→</button>
-        </div>
       </div>
       <div class="architecture-scroll" ref="scrollContent">
         <div
@@ -138,6 +134,14 @@
             <li v-for="(item, i) in card.items" :key="i">{{ item }}</li>
           </ul>
         </div>
+      </div>
+      <div class="scroll-buttons intro-scroll-buttons">
+        <button @click="scrollLeft" :aria-label="$t('home.scrollLeft')">
+          ←
+        </button>
+        <button @click="scrollRight" :aria-label="$t('home.scrollRight')">
+          →
+        </button>
       </div>
     </div>
 
@@ -326,13 +330,27 @@ onUnmounted(() => {
 
 function scrollLeft(): void {
   if (scrollContent.value) {
-    scrollContent.value.scrollBy({ left: -300, behavior: 'smooth' });
+    const scrollValue =
+      window.innerWidth > 900
+        ? -scrollContent.value.clientWidth * 0.34
+        : -scrollContent.value.clientWidth * 1.1;
+    scrollContent.value.scrollBy({
+      left: scrollValue,
+      behavior: 'smooth',
+    });
   }
 }
 
 function scrollRight(): void {
   if (scrollContent.value) {
-    scrollContent.value.scrollBy({ left: 300, behavior: 'smooth' });
+    const scrollValue =
+      window.innerWidth > 900
+        ? scrollContent.value.clientWidth * 0.34
+        : scrollContent.value.clientWidth * 1.1;
+    scrollContent.value.scrollBy({
+      left: scrollValue,
+      behavior: 'smooth',
+    });
   }
 }
 </script>
@@ -361,14 +379,14 @@ li {
 .page {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   width: 100%;
   min-height: 100vh;
   margin: 0 auto;
-  padding: 2vh 2vw;
+  padding: 2vh 15%;
   position: relative;
   overflow: hidden;
   box-sizing: border-box;
+  gap: 5vh;
 }
 
 .page::before {
@@ -402,8 +420,6 @@ li {
 
 .intro-container {
   text-align: left;
-  margin-right: auto;
-  max-width: 50vw;
   padding: 1vh 0;
 }
 
@@ -411,8 +427,6 @@ li {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(300px, 40vw), 1fr));
   gap: 2vh;
-  max-width: 1200px;
-  margin: 0 auto;
 }
 
 .card {
@@ -443,9 +457,7 @@ li {
 
 .history-timeline {
   width: 100%;
-  max-width: 1200px;
   margin: 4vh auto;
-  padding: 0 2vw;
   background-image: var(--gradient-wave);
   background-repeat: no-repeat;
   background-size: cover;
@@ -574,30 +586,25 @@ li {
 
 .architecture-container {
   display: flex;
-  flex-direction: row;
-  padding: 40px;
-  gap: 40px;
-  max-width: 1200px;
+  flex-direction: column;
   margin: 0 auto;
+  width: 100%;
 }
 
 .architecture-intro {
   color: var(--mid-blue-light);
-  flex: 0 0 30%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
 
 .architecture-scroll {
-  flex: 2;
   display: flex;
-  overflow-x: auto;
+  overflow-x: scroll;
   scroll-behavior: smooth;
-  gap: 16px;
-  display: flex;
+  gap: 2%;
   scrollbar-width: none;
-  -ms-overflow-style: none;
+  width: 100%;
 }
 
 .architecture-scroll::-webkit-scrollbar {
@@ -610,22 +617,21 @@ li {
 }
 
 .architecture-card {
-  min-width: 300px;
-  max-width: 300px;
+  min-width: 32%;
   background: white;
   border-radius: 16px;
   padding: 20px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  flex-shrink: 0;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
 }
 
 .architecture-card img {
-  width: 100%;
-  flex: 0 0 auto;
-  border-radius: 12px;
-  margin-bottom: 12px;
+  height: 25vh;
+  width: auto;
+  object-fit: cover;
+  border-radius: 15px;
 }
 
 .info span {
@@ -640,7 +646,6 @@ li {
 }
 
 .intro-scroll-buttons {
-  margin-top: auto;
   display: flex;
   justify-content: center;
   gap: 12px;
@@ -669,22 +674,22 @@ li {
 
 .card-params {
   list-style: none;
-  padding-left: 0px;
+  padding-left: 0;
   font-size: 14px;
   color: #444;
-  margin: 0 0 16px;
   text-align: left;
+  margin: 0;
 }
 
 .astronomy-container {
   position: relative;
   width: 100%;
-  max-width: 1200px;
   margin: 4vh auto;
   padding: 0 2vw;
   background-image: var(--gradient-wave);
   background-repeat: no-repeat;
   background-size: cover;
+  box-sizing: border-box;
 }
 
 .astronomy-container::before {
@@ -712,14 +717,12 @@ li {
 }
 
 .double-cards {
-  grid-template-columns: repeat(auto-fit, minmax(min(450px, 100%), 1fr));
-  max-width: 1200px;
-  margin: 4vh auto;
-  padding: 0 2vw;
+  display: flex;
+  width: 100%;
 }
 
 .wide-card {
-  grid-column: span 1;
+  flex: 1;
 }
 
 .card-content {
@@ -740,5 +743,31 @@ li {
 .card-section p,
 .card-section li {
   color: var(--mid-blue-light);
+}
+
+@media (max-width: 900px) {
+  .page {
+    padding: 2vh 8%;
+  }
+  .intro-container h2 {
+    font-size: 1rem;
+  }
+  .card-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .period-card,
+  .card-content {
+    flex-direction: column;
+  }
+  .architecture-scroll {
+    gap: 10%;
+  }
+  .architecture-card {
+    min-width: 100%;
+  }
+  .card-section ul {
+    padding-left: 8%;
+  }
 }
 </style>
