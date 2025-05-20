@@ -1,7 +1,21 @@
-<script setup lang="ts"></script>
 <template>
+  <HeaderComponent />
   <router-view />
+  <Footer-Component />
 </template>
+
+<script>
+import FooterComponent from './components/Footer-Component.vue';
+import HeaderComponent from './components/Header-Component.vue';
+
+export default {
+  name: 'App',
+  components: {
+    HeaderComponent,
+    FooterComponent,
+  },
+};
+</script>
 
 <style scoped>
 .logo {

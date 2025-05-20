@@ -1,0 +1,19 @@
+:root {
+  --dark-blue: rgba(44, 62, 80, 0.9);
+  --dark-blue-light: rgba(44, 62, 80, 0.7);
+  --mid-blue: rgba(52, 73, 94, 0.85);
+  --mid-blue-light: rgba(52, 73, 94, 0.7);
+  --light-grey: rgba(127, 140, 141, 0.9);
+  --bg-white-soft: rgba(255, 255, 255, 0.8);
+  --white-hover: rgba(255, 255, 255, 0.95);
+  --pink-tint: rgba(234, 224, 224, 0.8);
+  --beige-tint: rgba(248, 249, 250, 0.95);
+  --brown: rgba(108, 88, 76, 0.8);
+  --brown-light: rgba(169, 132, 103, 0.8);
+  --grey-medium: rgba(108, 117, 125, 0.9);
+  --grey-medium-light: rgba(108, 117, 125, 0.8);
+  --green-pale: rgba(221, 229, 182, 0.9);
+  --green-tint: rgba(173, 193, 120, 0.8);
+
+  --gradient-wave: url('../../assets/main/gradient-wave.svg');
+}

@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import HomePage from '../pages/HomePage.vue';
 import SymbolicValue from '../pages/SymbolicValuePage.vue';
+import HomePage from '../pages/homepage/HomePage.vue';
+import InterviewPage from '../pages/interview/InterviewPage.vue';
+import WinterSolstice from '../pages/WinterSolstice.vue';
 
 const routes = [
   {
@@ -12,6 +14,17 @@ const routes = [
     path: '/symbolic-value',
     component: SymbolicValue,
     meta: { ruName: 'Символическое значение' },
+  },
+  {
+    path: '/interview',
+    component: InterviewPage,
+    meta: { ruName: 'Интервью' },
+  },
+  {
+    path: '/winter-solstice',
+    name: 'WinterSolstice',
+    component: WinterSolstice,
+    meta: { ruName: 'Зимнее солнцестояние' },
   },
 ];
 
