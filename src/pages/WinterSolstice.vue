@@ -80,8 +80,6 @@
   </section>
 </template>
 
-<script setup lang="ts"></script>
-
 <style scoped>
 .page {
   display: flex;

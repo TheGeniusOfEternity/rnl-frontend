@@ -1,50 +1,24 @@
 <template>
   <footer class="footer">
-    <router-link to="/" class="logo" @click="closeMenu"
+    <router-link to="/" class="logo"
       ><img src="../assets/logo.png" alt=""
     /></router-link>
-    <nav :class="['nav', { open: isMenuOpen }]">
-      <router-link to="/" class="nav-link" @click="closeMenu"
-        >Главная</router-link
-      >
-      <router-link to="/symbolic-value" class="nav-link" @click="closeMenu"
+    <nav class="nav">
+      <router-link to="/" class="nav-link">Главная</router-link>
+      <router-link to="/symbolic-value" class="nav-link"
         >Символическое значение</router-link
       >
-      <router-link to="/winter-solstice" class="nav-link" @click="closeMenu"
+      <router-link to="/winter-solstice" class="nav-link"
         >Зимнее солнцестояние</router-link
       >
+      <router-link to="/interview" class="nav-link">Интервью</router-link>
     </nav>
-    <button
-      class="menu-toggle"
-      aria-label="Открыть меню"
-      @click="toggleMenu"
-      :aria-expanded="isMenuOpen"
-    >
-      &#9776;
-    </button>
   </footer>
 </template>
 
-<script setup lang="ts">
-import { ref } from 'vue';
-
-const isMenuOpen = ref(false);
-
-function toggleMenu() {
-  isMenuOpen.value = !isMenuOpen.value;
-}
-
-function closeMenu() {
-  isMenuOpen.value = false;
-}
-</script>
-
 <style scoped>
 .footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100vw;
+  width: 100%;
   background-color: #f0ead2;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   display: flex;
@@ -52,7 +26,6 @@ function closeMenu() {
   justify-content: space-between;
   padding: 2vw 5vw;
   box-sizing: border-box;
-  z-index: 2;
 }
 
 .logo {
@@ -69,7 +42,6 @@ function closeMenu() {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  flex: 1;
 }
 
 .nav-link {
@@ -85,27 +57,6 @@ function closeMenu() {
 
 .nav-link:hover {
   background: #e7deb7;
-}
-
-.menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 2rem;
-  cursor: pointer;
-  padding: 0 0.5rem 0.3rem 0.5rem;
-  margin: 0;
-  color: #6c584c;
-  align-items: center;
-  justify-content: center;
-  border-radius: 6px;
-  transition: background 0.2s;
-}
-
-.menu-toggle:focus,
-.menu-toggle:active {
-  background: #e7deb7;
-  outline: none;
 }
 
 @media (max-width: 900px) {
@@ -136,9 +87,6 @@ function closeMenu() {
   }
   .nav-link:hover {
     background: #e7deb7;
-  }
-  .menu-toggle {
-    display: none;
   }
 }
 </style>

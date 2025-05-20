@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import jsonData from '../../locales/ru.json';
+import { useI18n } from 'vue-i18n';
+const { t } = useI18n();
 </script>
 
 <template>
   <section class="page">
-    <h1 class="title">{{ $t('interview.intro') }}</h1>
+    <h1 class="title">{{ t('interview.intro') }}</h1>
     <div class="topics">
       <div v-for="topic in jsonData.interview.topics" :key="topic.title">
         <h2 class="topic">{{ topic.title }}</h2>
@@ -52,8 +54,8 @@ import jsonData from '../../locales/ru.json';
   flex-direction: column;
   width: 100%;
   min-height: 100vh;
-  margin: 0 auto;
-  padding: 10vh 20%;
+  margin: var(--header-height) auto 0 auto;
+  padding: 5vh 20%;
   position: relative;
   overflow: hidden;
   box-sizing: border-box;
@@ -66,7 +68,7 @@ import jsonData from '../../locales/ru.json';
   top: -20%;
   left: 50%;
   width: 250%;
-  height: 43%;
+  height: 42%;
   border-radius: 50%;
   transform: translateX(-50%) translateY(-45%);
   background: radial-gradient(
@@ -101,7 +103,7 @@ import jsonData from '../../locales/ru.json';
 
 .topics {
   width: 100%;
-  margin: 5vh auto;
+  margin: 10vh auto;
   font-family: Arial, sans-serif;
   line-height: 1.5;
 }
@@ -172,7 +174,7 @@ import jsonData from '../../locales/ru.json';
     font-size: 1.2rem;
   }
   .page {
-    padding: 5vh 10%;
+    padding: 2vh 10%;
   }
   .page:before {
     height: 65%;
@@ -187,7 +189,7 @@ import jsonData from '../../locales/ru.json';
     font-size: 1rem;
   }
   .topics {
-    margin: 5vh auto;
+    margin: 0 auto;
   }
   .credits {
     padding: 5vw 5vw 15vh 5vw;

@@ -13,11 +13,8 @@
       <router-link to="/winter-solstice" class="nav-link" @click="closeMenu"
         >Зимнее солнцестояние</router-link
       >
-      <router-link to="/signin" class="nav-link" @click="closeMenu"
-        >Войти</router-link
-      >
-      <router-link to="/signup" class="nav-link" @click="closeMenu"
-        >Зарегистрироваться</router-link
+      <router-link to="/interview" class="nav-link" @click="closeMenu"
+        >Интервью</router-link
       >
     </nav>
     <button

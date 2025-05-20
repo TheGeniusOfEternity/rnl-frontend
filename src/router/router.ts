@@ -26,11 +26,17 @@ const routes = [
     component: WinterSolstice,
     meta: { ruName: 'Зимнее солнцестояние' },
   },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'HomePage',
+    component: HomePage,
+  },
 ];
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
+  scrollBehavior: () => ({ top: 0 }),
 });
 
 router.beforeEach((to) => {
