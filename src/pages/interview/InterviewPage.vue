@@ -33,7 +33,7 @@ import jsonData from '../../locales/ru.json';
       </div>
     </div>
     <div class="credits">
-      <h1 class="title">Полезные ссылки от Клэр Таффи</h1>
+      <h2 class="title">Полезные ссылки от Клэр Таффи</h2>
       <div
         class="credit"
         v-for="(credit, index) in jsonData.interview.credits"
@@ -151,7 +151,7 @@ import jsonData from '../../locales/ru.json';
 .credits {
   background-color: #f3f1fa;
   color: #453c5c;
-  padding: 2vw;
+  padding: 2vw 2vw 10vh 2vw;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   display: flex;
