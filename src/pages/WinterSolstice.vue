@@ -142,7 +142,6 @@
   border-radius: 1.5vh;
   overflow: hidden;
   box-shadow: 0 0.4vh 2vh rgba(0, 0, 0, 0.1);
-  height: 35vh;
 }
 
 .card.reverse {
