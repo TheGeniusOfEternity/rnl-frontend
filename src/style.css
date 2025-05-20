@@ -3,6 +3,11 @@
   line-height: 1.5;
   font-weight: 400;
 
+  --menu-item-height: 48px;
+  --menu-max-width: 320px;
+  --header-height: 70px;
+  --footer-height: 10rem;
+
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
@@ -69,6 +74,7 @@ button:focus-visible {
   :root {
     color: #213547;
     background-color: #ffffff;
+    --footer-height: 56px;
   }
   a:hover {
     color: #747bff;
