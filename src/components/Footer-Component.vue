@@ -44,10 +44,7 @@ function closeMenu() {
 
 <style scoped>
 .footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100vw;
+  width: 100%;
   background-color: #f0ead2;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   display: flex;
@@ -55,7 +52,6 @@ function closeMenu() {
   justify-content: space-between;
   padding: 2vw 5vw;
   box-sizing: border-box;
-  z-index: 2;
 }
 
 .logo {
@@ -72,7 +68,6 @@ function closeMenu() {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  flex: 1;
 }
 
 .nav-link {
