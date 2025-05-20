@@ -197,7 +197,6 @@
   .card,
   .card.reverse {
     flex-direction: column;
-    height: 80vh;
     gap: 2vh;
     padding: 1.3rem;
   }
