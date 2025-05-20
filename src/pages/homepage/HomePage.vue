@@ -381,7 +381,7 @@ li {
   flex-direction: column;
   width: 100%;
   min-height: 100vh;
-  margin: 0 auto;
+  margin: var(--header-height) auto 0 auto;
   padding: 2vh 15%;
   position: relative;
   overflow: hidden;
