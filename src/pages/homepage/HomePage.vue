@@ -136,8 +136,12 @@
         </div>
       </div>
       <div class="scroll-buttons intro-scroll-buttons">
-        <button @click="scrollLeft">←</button>
-        <button @click="scrollRight">→</button>
+        <button @click="scrollLeft" :aria-label="$t('home.scrollLeft')">
+          ←
+        </button>
+        <button @click="scrollRight" :aria-label="$t('home.scrollRight')">
+          →
+        </button>
       </div>
     </div>
 
