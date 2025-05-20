@@ -10,8 +10,24 @@ import jsonData from '../../locales/ru.json';
         <h2 class="topic">{{ topic.title }}</h2>
         <div class="pair" v-for="(pair, index) in topic.pairs" :key="index">
           <div class="question">- {{ pair.question }}</div>
-          <div class="answer">- {{ pair.answer }}</div>
+          <div class="answer">
+            - {{ pair.answer }}
+            <a class="link" v-if="pair.link" :href="pair.link">{{
+              pair.link
+            }}</a>
+          </div>
         </div>
+      </div>
+    </div>
+    <div class="credits">
+      <h1 class="title">Полезные ссылки от Клэр Таффи</h1>
+      <div
+        class="credit"
+        v-for="(credit, index) in jsonData.interview.credits"
+        :key="index"
+      >
+        <h4>- {{ credit.title }}</h4>
+        <a :href="credit.link">{{ credit.link }}</a>
       </div>
     </div>
   </section>
@@ -36,8 +52,8 @@ import jsonData from '../../locales/ru.json';
   position: absolute;
   top: -20%;
   left: 50%;
-  width: 150%;
-  height: 70%;
+  width: 250%;
+  height: 43%;
   border-radius: 50%;
   transform: translateX(-50%) translateY(-45%);
   background: radial-gradient(
@@ -72,7 +88,7 @@ import jsonData from '../../locales/ru.json';
 
 .topics {
   width: 100%;
-  margin: 15vh auto;
+  margin: 5vh auto;
   font-family: Arial, sans-serif;
   line-height: 1.5;
 }
@@ -109,6 +125,35 @@ import jsonData from '../../locales/ru.json';
   font-size: 1.3rem;
 }
 
+.link {
+  font-style: italic;
+}
+.credits {
+  background-color: #f3f1fa;
+  color: #453c5c;
+  padding: 2vw;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
+
+  .title {
+    margin: 0;
+  }
+
+  .credit {
+    display: flex;
+    flex-direction: column;
+
+    h4,
+    a {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+  }
+}
+
 @media screen and (max-width: 900px) {
   .title {
     font-size: 1.2rem;
@@ -130,6 +175,18 @@ import jsonData from '../../locales/ru.json';
   }
   .topics {
     margin: 5vh auto;
+  }
+  .credits {
+    padding: 5vw 5vw 15vh 5vw;
+
+    .credit {
+      h4,
+      a {
+        font-size: 1rem;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+      }
+    }
   }
 }
 </style>
