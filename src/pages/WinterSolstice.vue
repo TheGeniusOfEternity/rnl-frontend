@@ -1,11 +1,14 @@
-<!-- src/pages/WinterSolstice.vue -->
 <template>
+  <!-- Page container -->
   <section class="page">
+    <!-- Title -->
     <div class="intro-container">
       <h2>Зимнее солнцестояние в Ньюгрейндже</h2>
     </div>
 
+    <!-- Solstice cards -->
     <div class="card-container">
+      <!-- Card 1 -->
       <section class="card wide-card">
         <div class="card-image">
           <img
@@ -25,6 +28,7 @@
         </div>
       </section>
 
+      <!-- Card 2 -->
       <section class="card wide-card reverse">
         <div class="card-image">
           <img
@@ -43,6 +47,7 @@
         </div>
       </section>
 
+      <!-- Card 3 -->
       <section class="card wide-card">
         <div class="card-image">
           <img
@@ -61,6 +66,7 @@
         </div>
       </section>
 
+      <!-- Card 4 -->
       <section class="card wide-card reverse">
         <div class="card-image">
           <img
@@ -83,10 +89,11 @@
 </template>
 
 <script setup lang="ts">
-// чисто статическая страница — логика не нужна
+// Static page — no logic required
 </script>
 
 <style scoped>
+/* Base layout */
 html,
 body {
   height: 100%;
@@ -106,6 +113,7 @@ body {
   overflow: hidden;
 }
 
+/* Background layers */
 .page::before {
   content: '';
   position: fixed;
@@ -135,12 +143,14 @@ body {
   z-index: -3;
 }
 
+/* Intro title */
 .intro-container h2 {
   font-size: 2rem;
   text-align: center;
   margin-bottom: 3vh;
 }
 
+/* Cards layout */
 .card-container {
   display: flex;
   flex-direction: column;
@@ -156,15 +166,18 @@ body {
   box-shadow: 0 0.4vh 2vh rgba(0, 0, 0, 0.1);
 }
 
+/* Horizontal layout on desktop */
 @media (min-width: 800px) {
   .card.wide-card {
     flex-direction: row;
   }
+
   .card.wide-card.reverse {
     flex-direction: row-reverse;
   }
 }
 
+/* Image block */
 .card-image {
   flex: 1;
   max-width: 50%;
@@ -176,6 +189,7 @@ body {
   object-fit: cover;
 }
 
+/* Text block */
 .card-text {
   flex: 1;
   padding: 2vh 2vw;
