@@ -1,14 +1,9 @@
 <template>
-  <!-- Page container -->
   <section class="page">
-    <!-- Title -->
     <div class="intro-container">
       <h2>Зимнее солнцестояние в Ньюгрейндже</h2>
     </div>
-
-    <!-- Solstice cards -->
     <div class="card-container">
-      <!-- Card 1 -->
       <section class="card wide-card">
         <div class="card-image">
           <img
@@ -28,7 +23,6 @@
         </div>
       </section>
 
-      <!-- Card 2 -->
       <section class="card wide-card reverse">
         <div class="card-image">
           <img
@@ -47,7 +41,6 @@
         </div>
       </section>
 
-      <!-- Card 3 -->
       <section class="card wide-card">
         <div class="card-image">
           <img
@@ -66,7 +59,6 @@
         </div>
       </section>
 
-      <!-- Card 4 -->
       <section class="card wide-card reverse">
         <div class="card-image">
           <img
@@ -88,32 +80,22 @@
   </section>
 </template>
 
-<script setup lang="ts">
-// Static page — no logic required
-</script>
+<script setup lang="ts"></script>
 
 <style scoped>
-/* Base layout */
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
 .page {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 4vh;
-  padding: 2vh 2vw;
-  max-width: 1200px;
+  padding: var(--header-height) 2vw;
+  max-width: 60%;
   margin: 0 auto;
   position: relative;
   min-height: 100vh;
   overflow: hidden;
 }
 
-/* Background layers */
 .page::before {
   content: '';
   position: fixed;
@@ -143,14 +125,11 @@ body {
   z-index: -3;
 }
 
-/* Intro title */
 .intro-container h2 {
   font-size: 2rem;
-  text-align: center;
-  margin-bottom: 3vh;
+  margin: 5vh 0 3vh 0;
 }
 
-/* Cards layout */
 .card-container {
   display: flex;
   flex-direction: column;
@@ -159,49 +138,77 @@ body {
 
 .card {
   display: flex;
-  flex-direction: column;
   background: rgba(255, 255, 255, 0.9);
   border-radius: 1.5vh;
   overflow: hidden;
   box-shadow: 0 0.4vh 2vh rgba(0, 0, 0, 0.1);
+  height: 35vh;
 }
 
-/* Horizontal layout on desktop */
-@media (min-width: 800px) {
-  .card.wide-card {
-    flex-direction: row;
-  }
-
-  .card.wide-card.reverse {
-    flex-direction: row-reverse;
-  }
-}
-
-/* Image block */
-.card-image {
-  flex: 1;
-  max-width: 50%;
+.card.reverse {
+  flex-direction: row-reverse;
 }
 
 .card-image img {
+  border-radius: 1.5vh;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* Text block */
 .card-text {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
   flex: 1;
   padding: 2vh 2vw;
 }
 
+.card-image {
+  flex: 1;
+  width: 100%;
+}
+
 .card-text h2 {
   margin-bottom: 1vh;
+  font-size: 1.2rem;
   color: rgba(44, 62, 80, 0.9);
 }
 
 .card-text p {
   line-height: 1.6;
   color: rgba(52, 73, 94, 0.85);
+}
+
+@media (max-width: 900px) {
+  .page {
+    max-width: 90%;
+    padding-bottom: 5%;
+  }
+  .intro-container h2 {
+    font-size: 1.3rem;
+    text-align: center;
+    margin-bottom: 0;
+  }
+
+  .card-container {
+    gap: 5vh;
+  }
+
+  .card,
+  .card.reverse {
+    flex-direction: column;
+    height: 80vh;
+    gap: 2vh;
+    padding: 1.3rem;
+  }
+
+  .card-text h2 {
+    margin-top: 0;
+  }
+
+  .card-text p {
+    margin-top: 0;
+  }
 }
 </style>
