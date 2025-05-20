@@ -6,15 +6,28 @@ import jsonData from '../../locales/ru.json';
   <section class="page">
     <h1 class="title">{{ $t('interview.intro') }}</h1>
     <div class="topics">
-      <div v-for="(topic, index) in jsonData.interview.topics" :key="index">
+      <div
+        v-for="(topic, topicIndex) in jsonData.interview.topics"
+        :key="topicIndex"
+      >
         <h2 class="topic">{{ topic.title }}</h2>
-        <div class="pair" v-for="(pair, index) in topic.pairs" :key="index">
+        <div
+          class="pair"
+          v-for="(pair, pairIndex) in topic.pairs"
+          :key="pairIndex"
+        >
           <div class="question">- {{ pair.question }}</div>
           <div class="answer">
             - {{ pair.answer }}
-            <a class="link" v-if="pair.link" :href="pair.link">{{
-              pair.link
-            }}</a>
+            <a
+              class="link"
+              v-if="pair.link"
+              :href="pair.link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {{ pair.link }}
+            </a>
           </div>
         </div>
       </div>
@@ -27,7 +40,14 @@ import jsonData from '../../locales/ru.json';
         :key="index"
       >
         <h4>- {{ credit.title }}</h4>
-        <a :href="credit.link">{{ credit.link }}</a>
+        <a
+          class="link"
+          :href="credit.link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {{ credit.link }}
+        </a>
       </div>
     </div>
   </section>
