@@ -6,16 +6,9 @@ import jsonData from '../../locales/ru.json';
   <section class="page">
     <h1 class="title">{{ $t('interview.intro') }}</h1>
     <div class="topics">
-      <div
-        v-for="(topic, topicIndex) in jsonData.interview.topics"
-        :key="topicIndex"
-      >
+      <div v-for="topic in jsonData.interview.topics" :key="topic.title">
         <h2 class="topic">{{ topic.title }}</h2>
-        <div
-          class="pair"
-          v-for="(pair, pairIndex) in topic.pairs"
-          :key="pairIndex"
-        >
+        <div class="pair" v-for="pair in topic.pairs" :key="pair.title">
           <div class="question">- {{ pair.question }}</div>
           <div class="answer">
             - {{ pair.answer }}
