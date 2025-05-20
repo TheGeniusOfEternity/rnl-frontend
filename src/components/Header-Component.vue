@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer">
+  <header class="header">
     <router-link to="/" class="logo" @click="closeMenu"
       ><img src="../assets/logo.png" alt=""
     /></router-link>
@@ -13,65 +13,66 @@
       <router-link to="/winter-solstice" class="nav-link" @click="closeMenu"
         >Зимнее солнцестояние</router-link
       >
+      <router-link to="/signin" class="nav-link" @click="closeMenu"
+        >Войти</router-link
+      >
+      <router-link to="/signup" class="nav-link" @click="closeMenu"
+        >Зарегистрироваться</router-link
+      >
     </nav>
     <button
       class="menu-toggle"
       aria-label="Открыть меню"
       @click="toggleMenu"
-      :aria-expanded="isMenuOpen"
+      :aria-expanded="isMenuOpen.toString()"
     >
       &#9776;
     </button>
-  </footer>
+  </header>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
-
 const isMenuOpen = ref(false);
-
 function toggleMenu() {
   isMenuOpen.value = !isMenuOpen.value;
 }
-
 function closeMenu() {
   isMenuOpen.value = false;
 }
 </script>
 
 <style scoped>
-.footer {
+.header {
   position: fixed;
-  bottom: 0;
+  top: 0;
   left: 0;
   width: 100vw;
-  background-color: #f0ead2;
+  height: var(--header-height);
+  background-color: #dde5b6;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2vw 5vw;
+  padding: 10px 16px 10px;
   box-sizing: border-box;
   z-index: 2;
 }
-
 .logo {
-  width: 15vw;
+  display: flex;
+  height: 100%;
+  box-sizing: border-box;
 }
-
 .logo img {
-  width: 100%;
   height: 100%;
   display: flex;
 }
-
 .nav {
   display: flex;
   align-items: center;
   justify-content: flex-end;
   flex: 1;
 }
-
 .nav-link {
   display: inline;
   text-decoration: none;
@@ -82,63 +83,85 @@ function closeMenu() {
   line-height: 1.5;
   transition: background 0.2s;
 }
-
 .nav-link:hover {
-  background: #e7deb7;
+  background: #c4cf86;
 }
-
 .menu-toggle {
-  display: none;
   background: none;
   border: none;
-  font-size: 2rem;
   cursor: pointer;
-  padding: 0 0.5rem 0.3rem 0.5rem;
   margin: 0;
+  height: 100%;
+  box-sizing: border-box;
+  font-size: 2rem;
+  padding: 0 0 1.5% 0;
+  aspect-ratio: 1/ 1;
   color: #6c584c;
+  display: none;
+  vertical-align: middle;
   align-items: center;
   justify-content: center;
   border-radius: 6px;
   transition: background 0.2s;
 }
-
 .menu-toggle:focus,
 .menu-toggle:active {
-  background: #e7deb7;
+  background: #c4cf86;
   outline: none;
 }
-
 @media (max-width: 900px) {
-  .footer {
-    flex-direction: column;
-    padding: 5vw 2vw;
-  }
-  .logo {
-    width: 70%;
-    padding: 0 5%;
-    box-sizing: border-box;
-  }
   .nav {
+    display: none;
+    position: fixed;
+    top: var(--header-height);
+    right: 0;
+    background: #dde5b6;
     flex-direction: column;
-    width: 70%;
+    align-items: stretch;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    z-index: 1;
+    border-radius: 0 0 12px 12px;
+    max-height: calc(100vh - 56px);
+  }
+  .nav.open {
+    display: flex;
   }
   .nav-link {
-    padding: 0.8rem 0.8rem 0.8rem 1rem;
-    border-bottom: 1px solid #94857c;
+    padding: 0.8rem 0.8rem 0.8rem 0.9rem;
+    height: var(--menu-item-height);
+    line-height: var(--menu-item-height);
+    border-bottom: 1px solid #adc178;
     font-size: 1.1rem;
     display: flex;
-    justify-content: center;
-    border-radius: 5px 5px 5px 0;
-    background: #f0ead2;
+    align-items: center;
+    text-align: left;
+    border-radius: 6px;
+    background: #dde5b6;
     transition: background 0.3s;
-    width: 100%;
-    box-sizing: border-box;
   }
   .nav-link:hover {
-    background: #e7deb7;
+    background: #c4cf86;
+  }
+  .nav-link:last-child {
+    border-bottom: none;
   }
   .menu-toggle {
-    display: none;
+    display: flex;
+  }
+}
+@media (min-width: 901px) {
+  .menu-toggle {
+    display: none !important;
+  }
+  .nav {
+    display: flex !important;
+    position: static;
+    max-height: none;
+    max-width: none;
+    box-shadow: none;
+    border-radius: 0;
+    overflow: visible;
+    flex-direction: row;
   }
 }
 </style>
