@@ -1,103 +1,140 @@
+<!-- src/views/WinterSolsticeView.vue -->
 <template>
-  <section class="block block-1">
-    <div class="content">
-      <h1>Winter Solstice</h1>
-      <p>The longest night of the year</p>
-    </div>
-  </section>
+  <section class="page">
+    <!-- 1. Особенность зимнего солнцестояния -->
+    <article class="card wide-card">
+      <div class="card-image">
+        <img
+          src="/src/assets/winter-solstice/solstice-beam.jpg"
+          alt="Солнечный луч в Ньюгрейндже"
+        />
+      </div>
+      <div class="card-text">
+        <h2>1. Особенность зимнего солнцестояния</h2>
+        <p>
+          Каждый год приблизительно с 19 по 23 декабря, во время восхода солнца,
+          лучи света проникают через специальное окно над входом, проходят по
+          коридору и на ≈17 минут заполняют внутреннюю камеру. Явление длится
+          всего несколько дней и привлекает тысячи туристов и исследователей.
+        </p>
+      </div>
+    </article>
 
-  <section class="block block-2">
-    <div class="content">
-      <h2>Celebration</h2>
-      <p></p>
-    </div>
-  </section>
+    <!-- 2. Архитектура и астрономические знания -->
+    <article class="card wide-card reverse">
+      <div class="card-image">
+        <img
+          src="/src/assets/winter-solstice/entrance-roofbox.jpg"
+          alt="Вход и roof-box Ньюгрейнджа"
+        />
+      </div>
+      <div class="card-text">
+        <h2>2. Архитектура и астрономические знания</h2>
+        <p>
+          Окно над входом («roof-box») расположено с потрясающей точностью: оно
+          направляет солнечный луч точно внутрь в дни зимнего солнцестояния. В
+          центральной камере стоит чаша — вероятно, ритуального назначения;
+          поэтому её часто называют погребальной.
+        </p>
+      </div>
+    </article>
 
-  <section class="block block-3">
-    <div class="content">
-      <h2>Nature</h2>
-      <p>The turning point of light</p>
-    </div>
-  </section>
+    <!-- 3. Посещение во время зимнего солнцестояния -->
+    <article class="card wide-card">
+      <div class="card-image">
+        <img
+          src="/src/assets/winter-solstice/lottery-winners.jpg"
+          alt="Внутри Ньюгрейнджа на рассвете"
+        />
+      </div>
+      <div class="card-text">
+        <h2>3. Посещение во время зимнего солнцестояния</h2>
+        <p>
+          Попасть внутрь в эти дни непросто — нужно выиграть ежегодную лотерею.
+          Лишь по 10 счастливчиков в день наблюдают явление из центральной
+          камеры. Очевидцы описывают это как нечто магическое и мистическое.
+        </p>
+      </div>
+    </article>
 
-  <section class="block block-4">
-    <div class="content">
-      <h2>Traditions</h2>
-      <p>Ancient customs from around the world</p>
-    </div>
+    <!-- 4. Посещение в другие дни -->
+    <article class="card wide-card reverse">
+      <div class="card-image">
+        <img
+          src="/src/assets/winter-solstice/artificial-light.jpg"
+          alt="Искусственная демонстрация эффекта"
+        />
+      </div>
+      <div class="card-text">
+        <h2>4. Посещение в другие дни</h2>
+        <p>
+          В остальное время для посетителей проводят демонстрацию с проекторами:
+          узкий луч искусственного света повторяет путь солнечного луча. Камера
+          невелика, поэтому на реконструкцию пускают максимум 24 человека в
+          день.
+        </p>
+      </div>
+    </article>
   </section>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+// Здесь логика не нужна — чисто статическая страница.
+</script>
 
 <style scoped>
-.block {
-  position: relative;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  min-height: 40vh;
-  padding: 3rem 2rem;
+/* Базовая вёрстка взята из HomeView.vue и чуть упрощена */
+.page {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
+  flex-direction: column;
+  gap: 4vh;
+  padding: 2vh 2vw;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.content {
-  z-index: 2;
-  position: relative;
+.authors {
+  font-size: 0.9rem;
+  color: rgba(52, 73, 94, 0.7);
+  margin-top: 0.5rem;
 }
 
-.block::before {
-  content: '';
-  width: 100%;
-  height: 168px;
-  position: absolute;
-  bottom: -0.3%;
-  left: 0;
-  background-size: auto;
-  background-repeat: repeat no-repeat;
-  z-index: 1;
+.card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 1.5vh;
+  overflow: hidden;
+  box-shadow: 0 0.4vh 2vh rgba(0, 0, 0, 0.1);
 }
 
-@media (max-width: 850px) {
-  .block::before {
-    height: 84px;
+@media (min-width: 800px) {
+  .card.wide-card {
+    flex-direction: row;
+  }
+  .card.wide-card.reverse {
+    flex-direction: row-reverse;
   }
 }
 
-.block-1 {
-  background-color: #20b2aa;
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.block-1::before {
-  background-position: 11vw bottom;
-  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1200 127' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M0 93L50 87C100 82 200 70 300 47C400 25 500 -10 600 2C700 13 800 70 900 93C1000 116 1100 104 1150 99L1200 93V127H1150C1100 127 1000 127 900 127C800 127 700 127 600 127C500 127 400 127 300 127C200 127 100 127 50 127H0V93Z' fill='%23FFF5EE'/></svg>");
+.card-text {
+  flex: 1;
+  padding: 2vh 2vw;
 }
 
-.block-2 {
-  background-color: #fff5ee;
-  color: #333;
-}
-.block-2::before {
-  background-position: 57vw bottom;
-  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1200 127' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M0 93L50 87C100 82 200 70 300 47C400 25 500 -10 600 2C700 13 800 70 900 93C1000 116 1100 104 1150 99L1200 93V127H1150C1100 127 1000 127 900 127C800 127 700 127 600 127C500 127 400 127 300 127C200 127 100 127 50 127H0V93Z' fill='%23ADC178'/></svg>");
+.card-text h2 {
+  margin-bottom: 1vh;
+  color: rgba(44, 62, 80, 0.9);
 }
 
-.block-3 {
-  background-color: #adc178;
-}
-.block-3::before {
-  background-position: 0vw bottom;
-  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1200 127' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M0 93L50 87C100 82 200 70 300 47C400 25 500 -10 600 2C700 13 800 70 900 93C1000 116 1100 104 1150 99L1200 93V127H1150C1100 127 1000 127 900 127C800 127 700 127 600 127C500 127 400 127 300 127C200 127 100 127 50 127H0V93Z' fill='%23ffffff'/></svg>");
-}
-
-.block-4 {
-  background-color: #ffffff;
-  color: #222;
-}
-.block-4::before {
-  display: none;
+.card-text p {
+  line-height: 1.6;
+  color: rgba(52, 73, 94, 0.85);
 }
 </style>
