@@ -45,22 +45,24 @@ function closeMenu() {
   bottom: 0;
   left: 0;
   width: 100vw;
-  height: var(--footer-height);
   background-color: #f0ead2;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 5px 16px 5px;
+  padding: 2vw 5vw;
   box-sizing: border-box;
   z-index: 2;
 }
 
+.logo {
+  width: 15vw;
+}
+
 .logo img {
-  padding: 0.5rem 0.5rem 0.5rem 1rem;
-  height: 6.5rem;
-  width: auto;
-  display: block;
+  width: 100%;
+  height: 100%;
+  display: flex;
 }
 
 .nav {
@@ -107,62 +109,36 @@ function closeMenu() {
 }
 
 @media (max-width: 900px) {
-  .nav {
-    display: none;
-    position: fixed;
-    bottom: 10rem;
-    right: 0;
-    background: #e7deb7;
+  .footer {
     flex-direction: column;
-    align-items: stretch;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-    z-index: 1;
-    border-radius: 12px 12px 0 0;
-    max-height: calc(100vh - 56px);
+    padding: 5vw 2vw;
   }
-  .nav.open {
-    display: flex;
+  .logo {
+    width: 70%;
+    padding: 0 5%;
+    box-sizing: border-box;
+  }
+  .nav {
+    flex-direction: column;
+    width: 70%;
   }
   .nav-link {
     padding: 0.8rem 0.8rem 0.8rem 1rem;
-    height: var(--menu-item-height);
-    line-height: var(--menu-item-height);
     border-bottom: 1px solid #94857c;
     font-size: 1.1rem;
     display: flex;
-    align-items: center;
-    text-align: left;
+    justify-content: center;
     border-radius: 5px 5px 5px 0;
     background: #f0ead2;
     transition: background 0.3s;
+    width: 100%;
+    box-sizing: border-box;
   }
   .nav-link:hover {
     background: #e7deb7;
   }
-  .nav-link:last-child {
-    border-bottom: none;
-  }
   .menu-toggle {
-    display: flex;
-  }
-  .logo img {
-    height: 5rem;
-  }
-}
-
-@media (min-width: 901px) {
-  .menu-toggle {
-    display: none !important;
-  }
-  .nav {
-    display: flex !important;
-    position: static;
-    max-height: none;
-    max-width: none;
-    box-shadow: none;
-    border-radius: 0;
-    overflow: visible;
-    flex-direction: row;
+    display: none;
   }
 }
 </style>
