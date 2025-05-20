@@ -600,7 +600,7 @@ li {
 
 .architecture-scroll {
   display: flex;
-  overflow-x: hidden;
+  overflow-x: scroll;
   scroll-behavior: smooth;
   gap: 2%;
   scrollbar-width: none;
