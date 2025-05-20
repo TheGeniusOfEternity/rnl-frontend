@@ -1,8 +1,7 @@
 import { createApp } from 'vue';
 import './style.css';
-import './assets/styles/main.css';
 import App from './App.vue';
-import './assets/styles/main.css';
+import './assets/style/main-page.css';
 import router from './router/router.ts';
 
 import { createI18n } from 'vue-i18n';
