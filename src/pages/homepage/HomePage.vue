@@ -126,7 +126,7 @@
           v-for="(card, index) in architectureCards"
           :key="index"
         >
-          <img :src="`/src/assets/main/arch-${index + 1}.png`" alt="image" />
+          <img :src="`/assets/main/arch-${index + 1}.png`" alt="image" />
 
           <div class="card-title">{{ card.title }}</div>
 
