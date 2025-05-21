@@ -4,7 +4,7 @@
   <Footer-Component />
 </template>
 
-<script>
+<script lang="ts">
 import FooterComponent from './components/Footer-Component.vue';
 import HeaderComponent from './components/Header-Component.vue';
 

@@ -10,13 +10,12 @@ const { t } = useI18n();
     <div class="topics">
       <div v-for="topic in jsonData.interview.topics" :key="topic.title">
         <h2 class="topic">{{ topic.title }}</h2>
-        <div class="pair" v-for="pair in topic.pairs" :key="pair.title">
+        <div class="pair" v-for="pair in topic.pairs" :key="pair.question">
           <div class="question">- {{ pair.question }}</div>
           <div class="answer">
             - {{ pair.answer }}
             <a
               class="link"
-              v-if="pair.link"
               :href="pair.link"
               target="_blank"
               rel="noopener noreferrer"

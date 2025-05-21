@@ -21,7 +21,7 @@
       class="menu-toggle"
       aria-label="Открыть меню"
       @click="toggleMenu"
-      :aria-expanded="isMenuOpen.toString()"
+      :aria-expanded="isMenuOpen"
     >
       &#9776;
     </button>
