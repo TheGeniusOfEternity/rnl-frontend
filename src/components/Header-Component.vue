@@ -53,7 +53,7 @@ function closeMenu() {
   justify-content: space-between;
   padding: 10px 16px 10px;
   box-sizing: border-box;
-  z-index: 2;
+  z-index: 10;
 }
 .logo {
   display: flex;

@@ -126,7 +126,10 @@
           v-for="(card, index) in architectureCards"
           :key="index"
         >
-          <img :src="`/assets/main/arch-${index + 1}.png`" alt="image" />
+          <img
+            :src="`/rnl-frontend/assets/main/arch-${index + 1}.png`"
+            alt="image"
+          />
 
           <div class="card-title">{{ card.title }}</div>
 
@@ -137,10 +140,10 @@
       </div>
       <div class="scroll-buttons intro-scroll-buttons">
         <button @click="scrollLeft" :aria-label="t('home.scrollLeft')">
-          ←
+          {{ t('home.scrollLeft') }}
         </button>
         <button @click="scrollRight" :aria-label="t('home.scrollRight')">
-          →
+          {{ t('home.scrollRight') }}
         </button>
       </div>
     </div>
