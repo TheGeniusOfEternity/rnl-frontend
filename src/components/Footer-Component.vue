@@ -12,6 +12,9 @@
         >Зимнее солнцестояние</router-link
       >
       <router-link to="/interview" class="nav-link">Интервью</router-link>
+      <router-link to="/interview-specialty" class="nav-link"
+        >Экспертное мнение</router-link
+      >
     </nav>
   </footer>
 </template>

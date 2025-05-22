@@ -1,8 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import SymbolicValue from '../pages/SymbolicValuePage.vue';
 import HomePage from '../pages/homepage/HomePage.vue';
-import InterviewPage from '../pages/interview/InterviewPage.vue';
 import WinterSolstice from '../pages/WinterSolstice.vue';
+import InterviewPage from '../pages/interview/InterviewPage.vue';
+import InterviewSpecialtyPage from '../pages/interview-specialty/InterviewSpecialtyPage.vue';
 
 const routes = [
   {
@@ -16,9 +17,14 @@ const routes = [
     meta: { ruName: 'Символическое значение' },
   },
   {
+    path: '/interview-specialty',
+    component: InterviewSpecialtyPage,
+    meta: { ruName: 'Экспертное мнение' },
+  },
+  {
     path: '/interview',
     component: InterviewPage,
-    meta: { ruName: 'Интервью' },
+    meta: { ruName: 'Глазами простого человека' },
   },
   {
     path: '/winter-solstice',

@@ -6,9 +6,12 @@ const { t } = useI18n();
 
 <template>
   <section class="page">
-    <h1 class="title">{{ t('interview.intro') }}</h1>
+    <h1 class="title">{{ t('interview_specialty.intro') }}</h1>
     <div class="topics">
-      <div v-for="topic in jsonData.interview.topics" :key="topic.title">
+      <div
+        v-for="topic in jsonData.interview_specialty.topics"
+        :key="topic.title"
+      >
         <h2 class="topic">{{ topic.title }}</h2>
         <div class="pair" v-for="pair in topic.pairs" :key="pair.question">
           <div class="question">- {{ pair.question }}</div>
@@ -24,6 +27,24 @@ const { t } = useI18n();
             </a>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="credits">
+      <h2 class="title">Полезные ссылки от Клэр Таффи</h2>
+      <div
+        class="credit"
+        v-for="(credit, index) in jsonData.interview_specialty.credits"
+        :key="index"
+      >
+        <h4>- {{ credit.title }}</h4>
+        <a
+          class="link"
+          :href="credit.link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {{ credit.link }}
+        </a>
       </div>
     </div>
   </section>

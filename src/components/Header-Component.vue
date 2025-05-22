@@ -16,6 +16,9 @@
       <router-link to="/interview" class="nav-link" @click="closeMenu"
         >Интервью</router-link
       >
+      <router-link to="/interview-specialty" class="nav-link" @click="closeMenu"
+        >Экспертное мнение</router-link
+      >
     </nav>
     <button
       class="menu-toggle"
